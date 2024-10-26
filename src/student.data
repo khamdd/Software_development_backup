@@ -1,0 +1,58 @@
+[
+    {
+        "student_id": 281820,
+        "name": "Kham",
+        "email": "dang.duong@university.com",
+        "password": "Helloworld123",
+        "subjects": [
+            {
+                "subject_id": 586,
+                "mark": 80,
+                "grade": "D"
+            },
+            {
+                "subject_id": 702,
+                "mark": 83,
+                "grade": "D"
+            },
+            {
+                "subject_id": 699,
+                "mark": 49,
+                "grade": "F"
+            },
+            {
+                "subject_id": 568,
+                "mark": 36,
+                "grade": "F"
+            }
+        ]
+    },
+    {
+        "student_id": 465439,
+        "name": "Cam",
+        "email": "cam.cam@university.com",
+        "password": "Camcam123",
+        "subjects": [
+            {
+                "subject_id": 719,
+                "mark": 79,
+                "grade": "D"
+            },
+            {
+                "subject_id": 845,
+                "mark": 61,
+                "grade": "P"
+            },
+            {
+                "subject_id": 450,
+                "mark": 100,
+                "grade": "HD"
+            },
+            {
+                "subject_id": 890,
+                "mark": 45,
+                "grade": "F"
+            }
+        ]
+    }
+]
