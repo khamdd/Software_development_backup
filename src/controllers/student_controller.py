@@ -17,15 +17,24 @@ class StudentController:
             password = input("Password: ")
             if(Utils().check_email(email) and Utils().check_password(password)):
                 print("Email and password format acceptable")
-                if(Database().check_existed_student(email)):
-                    print("Student already exists")
+                
+                existed_student = Database().check_existed_student(email)
+                if(existed_student):
+                    print(f"Student {existed_student.name} already exists")
+                    break
                 else:
                     name = input("Name: ")
-                    new_student = Student(random.randint(1, 999999), name, email, password, [])
+                    
+                    # Check unique student ID in student_list
+                    while True:
+                        id = random.randint(1, 999999)
+                        if not any(student.student_id == id for student in self.database.student_list):
+                            break
+                    new_student = Student(id, name, email, password, [])
                     self.database.add_student(new_student)
                     self.database.write_file()
                     print(f"Enrolling Student {name}")
-                break
+                    break
             else: print("Incorrect email or password format")
     
     def login(self):
@@ -43,4 +52,5 @@ class StudentController:
                     break
                 else:
                     print("Student does not exist")
+                    break
             else: print("Incorrect email or password format")

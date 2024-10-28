@@ -1,3 +1,8 @@
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+
 from src.controllers.admin_controller import AdminController
 from src.controllers.student_controller import StudentController
 from src.models.database import Database

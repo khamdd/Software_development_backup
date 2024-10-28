@@ -3,8 +3,8 @@ import random
 from src.models.subject import Subject
 
 class Utils:
-    EMAIL_REGEX = r'^[a-zA-Z0-9]+\.?[a-zA-Z0-9]+@university\.com$'
-    PASSWORD_REGEX = r'^[A-Z][a-zA-Z]{5,}\d{3,}$'
+    EMAIL_REGEX = r'^[a-zA-Z0-9]+\.[a-zA-Z0-9]+@university\.com$'
+    PASSWORD_REGEX = r'^[A-Z][a-zA-Z]{4,}\d{3,}$'
     
     @staticmethod
     def check_email(email):
@@ -31,6 +31,13 @@ class Utils:
         return grade
     
     @staticmethod
-    def get_random_subject():
+    def get_random_subject(subjects):
         mark = random.randint(25, 100)
-        return Subject(random.randint(1, 999), mark, Utils.grade_calculate(mark))
+    
+        while True:
+            id = random.randint(1, 999)
+            if not any(subject.subject_id == id for subject in subjects):
+                break
+        return Subject(id, mark, Utils.grade_calculate(mark))
+            
+

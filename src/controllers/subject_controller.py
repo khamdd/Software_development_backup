@@ -18,7 +18,7 @@ class SubjectController:
         if(self.current_student.subjects.__len__() == 4):
             print("Students are allowed to enrol in 4 subjects only")
             return
-        new_subject = Utils().get_random_subject()
+        new_subject = Utils().get_random_subject(self.current_student.subjects)
         self.current_student.subjects.append(new_subject)
         
         self.database.write_file()
