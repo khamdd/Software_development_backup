@@ -42,11 +42,14 @@ class SubjectController:
         if(self.current_student.subjects.__len__() == 0):
             print("No subjects to remove")
             return
-        
-        print(f"Remove Subject by ID: {self.current_student.subjects[-1].subject_id}")
-        print(f"Dropping Subject-{self.current_student.subjects[-1].subject_id}")
-        self.current_student.subjects.pop()
-        
+
+        option = int(input("Remove Subject by ID: "))
+        for subject in self.current_student.subjects:
+            if(subject.subject_id == option):
+                self.current_student.subjects.remove(subject)
+                print("Dropping Subject: " + str(subject))
+                break
+
         print(f"You are now enrolled in {self.current_student.subjects.__len__()} out of 4 subjects")
         self.database.write_file()
 
