@@ -30,9 +30,15 @@ class AdminController:
             print("< Nothing to Display >")
             return
         
+        new_group:List[Student] = []
         
+        for student in self.database.student_list:
+            if(student.subjects == []):
+                continue
+            new_group.append(student)
+            
         students_sorted_by_grade = sorted(
-            self.database.student_list,
+            new_group,
             key=lambda student: sum(subject.mark for subject in student.subjects) / len(student.subjects),
         )
         
@@ -63,6 +69,8 @@ class AdminController:
         }
         
         for student in self.database.student_list:
+            if(student.subjects == []):
+                continue
             grade = Utils.grade_calculate(self.get_average_mark(student))
             if(grade != "F"):
                 partitioned_students["PASS"].append(student)
